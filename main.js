@@ -2,14 +2,14 @@ const socket = require('socket.io');
 const express = require('express');
 const http = require('http');
 const path = require('path');
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 const server = http.Server(app);
 const io = socket(server);
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('port', PORT);
-app.get('/', (requ, resp) => resp.sendFile(path.join(__dirname, 'main.html')));
+app.get('/', (requ, resp) => resp.send(path.join(__dirname, 'main.html')));
 // app.listen(PORT, () => console.log(`Listening on ${PORT}!`));
 io.on('connection', (socket) => {
     console.log('User Connecting');
