@@ -1,5 +1,4 @@
 const socket = io();
-socket.on('message', (data) => console.log(data));
 
 var keyPressed = '';
 document.addEventListener('keydown', (e) => {
@@ -9,6 +8,11 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+socket.on('init', (data) => {
+    console.log(data);
+    $('#player-num').text(`Player ${data.id}`);
+    $('#container').addClass(data.color);
+})
 socket.on('pressed', (keyPressed) => {
     $('#content').text($('#content').text() + keyPressed);
 })
