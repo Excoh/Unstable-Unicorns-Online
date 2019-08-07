@@ -17,9 +17,3 @@ io.on('connection', (socket) => {
     socket.on('pressed', (data) => console.log('Pressing', data));
 });
 server.listen(PORT, () => console.log(`Listening on ${PORT} but server.`));
-
-
-setInterval( () => {
-    // send a message to all connected sockets with the name 'message'
-    io.sockets.emit('message', 'hi');
-}, 1000)
