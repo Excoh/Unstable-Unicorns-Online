@@ -14,6 +14,9 @@ app.get('/', (requ, resp) => resp.sendFile(path.join(__dirname, 'main.html')));
 io.on('connection', (socket) => {
     console.log('User Connecting');
     socket.on('disconnect', () => console.log('user disconnecting'));
-    socket.on('pressed', (data) => console.log('Pressing', data));
+    socket.on('pressed', (data) => {
+        console.log('Server Pressing', data);
+        io.emit('pressed', data);
+    });
 });
 server.listen(PORT, () => console.log(`Listening on ${PORT} but server.`));
