@@ -9,6 +9,7 @@ const server = http.Server(app);
 const io = socket(server);
 let playerCount = 0;
 const playerColor = ['red', 'green', 'blue'];
+const players = [];
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('port', PORT);
 app.get('/', (requ, resp) => resp.sendFile(path.join(__dirname, 'main.html')));
@@ -22,9 +23,21 @@ io.on('connection', (socket) => {
     });
     socket.emit('init', {
         id: (playerCount+1),
-        color: playerColor[playerCount]
+        color: playerColor[playerCount],
+        playerCount: playerCount
     });
     playerCount++;
     console.log(`Player ${playerCount} has entered the game.`);
+    socket.on('action', (data) => {
+        console.log(`Receiving action with payload: ${data}`);
+        if (data.type === 'clear') {
+            playerCount = 0;
+            socket.emit('action', {
+                type: 'clear',
+                playerCount: playerCount
+            });
+        }
+    });
 });
+
 server.listen(PORT, () => console.log(`Listening on ${PORT} but server.`));
