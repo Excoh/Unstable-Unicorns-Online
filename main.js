@@ -8,7 +8,7 @@ const app = express();
 const server = http.Server(app);
 const io = socket(server);
 let playerCount = 0;
-const playerColor = ['red', 'green', 'blue'];
+const playerColor = ['red', 'green', 'blue', 'black', 'pink'];
 const players = [];
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('port', PORT);
