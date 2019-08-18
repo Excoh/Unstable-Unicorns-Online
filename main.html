@@ -9,12 +9,20 @@
 
 <body>
     <p id="player-count"></p>
-    <button onclick="clearPlayers()">Clear Players</button>
+    <button onclick="clearPlayers()">Remove Players</button>
     <button>Create Room</button>
     <button>Join Room</button>
     <h1 id="player-num"></h1>
     <div id="container" class="container"></div>
     <div id="content"></div>
+    <div id="chat-box" class="chat-box">
+        <ul id="chat">
+        </ul>
+        <form action="">
+            <input id="msg" autocomplete="off">
+        </form>
+    </div>
     <script src="/public/javascripts/client.js"></script>
 </body>
+
 </html>
