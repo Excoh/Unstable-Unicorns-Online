@@ -85,6 +85,6 @@ body {
   border-radius: 8px;
 }
 .unicorn-card:hover {
-  transform: scale(1.025) rotateZ(0.65deg) translateY(-40px);
+  transform: scale(1.025) rotateZ(0.65deg) translateY(-20px);
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.125);
 }
