@@ -75,3 +75,16 @@ body {
 .violet {
   background-color: violet;
 }
+
+.unicorn-card {
+  width: 200px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.17);
+  transition-property: transform;
+  transition-duration: 50ms;
+  transition-timing-function: ease-in;
+  border-radius: 8px;
+}
+.unicorn-card:hover {
+  transform: scale(1.025) rotateZ(0.65deg) translateY(-40px);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.125);
+}

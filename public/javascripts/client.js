@@ -2,6 +2,7 @@ let playerNum = 0;
 let color;
 const animateTime = 500; // animation time in ms
 const socket = io();
+const logger = htmlLogger();
 
 $('form').submit(function (e) {
     e.preventDefault(); // prevents page reloading
@@ -56,4 +57,8 @@ function clearPlayers() {
 
 function updatePlayerCount(playerCount) {
     $('#player-count').text(`Total # of Players: ${playerCount}`);
+}
+
+function logSomething() {
+    logger.log();
 }
