@@ -5,7 +5,7 @@ const socket = io();
 const logger = htmlLogger();
 
 $('form').submit(function (e) {
-    e.preventDefault(); // prevents page reloading
+    e.preventDefault(); // prevents page reloading when submitting form
     const msg = $('#msg').val();
     const playerInfo = {
         msg: msg,

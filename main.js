@@ -8,11 +8,13 @@ const app = express();
 const server = http.Server(app);
 const io = socket(server);
 let playerCount = 0;
-const playerColor = ['red', 'green', 'blue', 'black', 'pink', 'violet'];
+const playerColorClass = ['red', 'green', 'blue', 'black', 'pink', 'violet'];
 const players = [];
-app.use('/public', express.static(path.join(__dirname, 'public')));
+
+app.use('/', express.static(path.join(__dirname, '/')));
 app.set('port', PORT);
 app.get('/', (requ, resp) => resp.sendFile(path.join(__dirname, 'main.html')));
+
 io.on('connection', (socket) => {
     console.log('User Connecting');
     socket.on('disconnect', () => console.log('user disconnecting'));
@@ -22,11 +24,11 @@ io.on('connection', (socket) => {
     });
     socket.emit('init', {
         id: (playerCount + 1),
-        color: playerColor[playerCount],
+        color: playerColorClass[playerCount],
         playerCount: playerCount
     });
     playerCount++;
-    console.log(`Player ${playerCount} has entered the game.`);
+    console.log(`Player ${playerCount} has entered the game!`);
     socket.on('action', (data) => {
         console.log(data);
         if (data.type === 'clear') {
